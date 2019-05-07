@@ -30,7 +30,7 @@ describe('Decryption Utility', () => {
             const expectedTokenError = new Error('Please supply a token to decrypt');
             let result;
             try {
-                result = await decryptUtil();
+                result = await decryptUtil.decrypt();
             } catch (error) {
                 result = error;
             }
@@ -45,7 +45,7 @@ describe('Decryption Utility', () => {
 
             let result;
             try {
-                result = await decryptUtil(testToken);
+                result = await decryptUtil.decrypt(testToken);
             } catch (error) {
                 result = error;
             }
@@ -58,7 +58,7 @@ describe('Decryption Utility', () => {
         it('Should return a decrypted token body', async () => {
             let result;
             try {
-                result = await decryptUtil(testToken, testPassphrase);
+                result = await decryptUtil.decrypt(testToken, testPassphrase);
             } catch (error) {
                 result = error;
             }

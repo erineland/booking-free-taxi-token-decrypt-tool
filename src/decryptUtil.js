@@ -1,6 +1,6 @@
 var crypto = require('./util/crypto');
 
-module.exports = async (encryptedToken, encryptedPassphrase) => {
+const decrypt = async (encryptedToken, encryptedPassphrase) => {
     if (!encryptedToken) {
         throw new Error('Please supply a token to decrypt');
     }
@@ -16,3 +16,5 @@ module.exports = async (encryptedToken, encryptedPassphrase) => {
 
     return JSON.parse(decryptedBody);
 };
+
+module.exports.decrypt = decrypt;
