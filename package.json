@@ -1,0 +1,21 @@
+{
+  "name": "taxi_token_decrypt_util",
+  "version": "1.0.0",
+  "description": "A small utility for locally decrypting tokens for taxi.booking.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "util",
+    "private",
+    "taxi",
+    "token",
+    "decrypt"
+  ],
+  "author": "***REMOVED*** ***REMOVED***",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
