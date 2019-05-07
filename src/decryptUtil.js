@@ -27,12 +27,12 @@ const encrypt = async (bodyToEncrypt, encryptionPassphrase) => {
         throw new Error('Please supply a passphrase to encrypt token with');
     }
 
-    const decryptedBody = crypto.decipher(
-        encryptedToken,
-        encryptedPassphrase
+    const encryptedBody = crypto.cipher(
+        bodyToEncrypt,
+        encryptionPassphrase
     );
 
-    return JSON.parse(decryptedBody);
+    return encryptedBody;
 };
 
 module.exports.decrypt = decrypt;
