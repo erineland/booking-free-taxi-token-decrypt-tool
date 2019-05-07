@@ -3,13 +3,13 @@ const decryptUtil = require('./src/decryptUtil');
 
 // Parse parameters
 const action = process.argv[2];
-console.log(`User is attempting to do: ${action}`);
+console.log(`\nUser is attempting to: ${action}`);
 
 const cryptoData = process.argv[3];
-console.log(`Data to be encrypted/decrypted: ${cryptoData}`);
+console.log(`\nData to be encrypted/decrypted: \n${cryptoData}`);
 
 const passphrase = process.argv[4];
-console.log(`Encryption passphrase to use: ${passphrase}`);
+console.log(`\nEncryption passphrase to use: \n${passphrase}`);
 
 // Run the util
 // Output the result to the console.
@@ -17,12 +17,12 @@ const runCryptoUtil = async (actionToRun, cryptoData, passphrase) => {
     let result;
     if (actionToRun === 'decrypt') {
         result = await decryptUtil.decrypt(cryptoData, passphrase);
-        console.log(`\nThe decrypted data is: ${result}`);
+        console.log(`\nThe decrypted data: \n ${JSON.stringify(JSON.parse(result), null, 2)}`);
         return;
     }
     if (actionToRun === 'encrypt') {
         result = await decryptUtil.encrypt(cryptoData, passphrase);
-        console.log(`\nThe encrypted data is: ${result}`);
+        console.log(`\nThe encrypted data: \n ${JSON.stringify(JSON.parse(result), null, 2)}`);
         return;
     }
 
