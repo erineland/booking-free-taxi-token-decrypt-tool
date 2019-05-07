@@ -14,7 +14,7 @@ const decrypt = async (encryptedToken, encryptedPassphrase) => {
         encryptedPassphrase
     );
 
-    return JSON.parse(decryptedBody);
+    return decryptedBody;
 };
 
 
