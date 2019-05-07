@@ -18,13 +18,13 @@ const decrypt = async (encryptedToken, encryptedPassphrase) => {
 };
 
 
-const encrypt = async (bodyToEncrypt, encryptedPassphrase) => {
+const encrypt = async (bodyToEncrypt, encryptionPassphrase) => {
     if (!bodyToEncrypt) {
         throw new Error('Please supply some data to encrypt');
     }
 
-    if (!encryptedPassphrase) {
-        throw new Error('Please supply a passphrase to decrypt token');
+    if (!encryptionPassphrase) {
+        throw new Error('Please supply a passphrase to encrypt token with');
     }
 
     const decryptedBody = crypto.decipher(

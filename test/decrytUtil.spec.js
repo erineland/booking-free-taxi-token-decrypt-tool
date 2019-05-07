@@ -83,5 +83,19 @@ describe('Decryption Utility', () => {
                 expect(result).toEqual(expectedBodyError);
             });
         });
+
+        describe('When a passphrase to encrypt some data is not supplied', () => {
+            it('Should throw an error', async () => {
+                const expectedPassphraseError = new Error('Please supply a passphrase to encrypt token with');
+                let result;
+                try {
+                    result = await decryptUtil.encrypt(testPassphrase);
+                } catch (error) {
+                    result = error;
+                }
+
+                expect(result).toEqual(expectedPassphraseError);
+            });
+        });
     });
 });
