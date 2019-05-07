@@ -25,45 +25,63 @@ const expectedDecryptedBody = {
 };
 
 describe('Decryption Utility', () => {
-    describe('When a token is not supplied', () => {
-        it('Should throw an error', async () => {
-            const expectedTokenError = new Error('Please supply a token to decrypt');
-            let result;
-            try {
-                result = await decryptUtil.decrypt();
-            } catch (error) {
-                result = error;
-            }
+    describe('When decrypting some data', () => {
+        describe('When a token is not supplied', () => {
+            it('Should throw an error', async () => {
+                const expectedTokenError = new Error('Please supply a token to decrypt');
+                let result;
+                try {
+                    result = await decryptUtil.decrypt();
+                } catch (error) {
+                    result = error;
+                }
 
-            expect(result).toEqual(expectedTokenError);
+                expect(result).toEqual(expectedTokenError);
+            });
+        });
+
+        describe('When a passphrase is not supplied', () => {
+            it('Should throw an error', async () => {
+                const expectedPassphraseError = new Error('Please supply a passphrase to decrypt token');
+
+                let result;
+                try {
+                    result = await decryptUtil.decrypt(testToken);
+                } catch (error) {
+                    result = error;
+                }
+
+                expect(result).toEqual(expectedPassphraseError);
+            });
+        });
+
+        describe('When both a token and a passphrase are supplied', () => {
+            it('Should return a decrypted token body', async () => {
+                let result;
+                try {
+                    result = await decryptUtil.decrypt(testToken, testPassphrase);
+                } catch (error) {
+                    result = error;
+                }
+
+                expect(result).toEqual(expectedDecryptedBody);
+            });
         });
     });
 
-    describe('When a passphrase is not supplied', () => {
-        it('Should throw an error', async () => {
-            const expectedPassphraseError = new Error('Please supply a passphrase to decrypt token');
+    describe('When encrypting some data', () => {
+        describe('When an object to encrypt is not supplied', () => {
+            it('Should throw an error', async () => {
+                const expectedBodyError = new Error('Please supply some data to encrypt');
+                let result;
+                try {
+                    result = await decryptUtil.encrypt();
+                } catch (error) {
+                    result = error;
+                }
 
-            let result;
-            try {
-                result = await decryptUtil.decrypt(testToken);
-            } catch (error) {
-                result = error;
-            }
-
-            expect(result).toEqual(expectedPassphraseError);
-        });
-    });
-
-    describe('When both a token and a passphrase are supplied', () => {
-        it('Should return a decrypted token body', async () => {
-            let result;
-            try {
-                result = await decryptUtil.decrypt(testToken, testPassphrase);
-            } catch (error) {
-                result = error;
-            }
-
-            expect(result).toEqual(expectedDecryptedBody);
+                expect(result).toEqual(expectedBodyError);
+            });
         });
     });
 });
