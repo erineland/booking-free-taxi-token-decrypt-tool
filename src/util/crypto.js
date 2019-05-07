@@ -1,6 +1,6 @@
-import crypto from 'crypto';
+const crypto = require('crypto');
 
-export default class Crypto {
+module.exports = class Crypto {
     static encrypt(body, secret) {
         return crypto
             .createHmac('sha256', secret)
