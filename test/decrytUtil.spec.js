@@ -27,12 +27,30 @@ const testDecryptedBody = {
 describe('Decryption Utility', () => {
     describe('When a token is not supplied', () => {
         it('Should throw an error', async () => {
-            const expectedError = new Error('Please supply a token to decrypt');
+            const expectedTokenError = new Error('Please supply a token to decrypt');
+            let result;
             try {
-                const decryptedResult = await decryptUtil();
+                result = await decryptUtil();
             } catch (error) {
-                expect(error.message).toBe(expectedError.message);
+                result = error;
             }
+
+            expect(result).toEqual(expectedTokenError);
+        });
+    });
+
+    describe('When a passphrase is not supplied', () => {
+        it('Should throw an error', async () => {
+            const expectedPassphraseError = new Error('Please supply a passphrase to decrypt token');
+
+            let result;
+            try {
+                result = await decryptUtil(testToken);
+            } catch (error) {
+                result = error;
+            }
+
+            expect(result).toEqual(expectedPassphraseError);
         });
     });
 });
