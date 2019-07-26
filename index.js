@@ -32,5 +32,3 @@ const runCryptoUtil = async (actionToRun, cryptoData, passphrase) => {
 }
 
 runCryptoUtil(action, cryptoData, passphrase);
-
-
