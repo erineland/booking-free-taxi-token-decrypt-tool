@@ -5,14 +5,10 @@
 ## Free Taxi v2 Tokens
 
 ```
-npm run decrypt <token>
+npm run decrypt
 ```
 
-### Example
-
-```
-npm run decrypt hiCLE-G4zkppgvEVf7Qh47uWJOqGrLH9lNDaCHXoZcES465-XTaCF9K7Viv9NugPSlceArgYe_hxBKrybBLRYsmTbQqwXX4vWmyOf7ONqC0LjJJVpXD0_cyHx6hlGSIMpFFo3pNlVAKGViAmT__9Y5TxJ3kb7BaPXhH-M75Wst6Lf3OOOOp0wzrZ69BwlqDW0pBi1qUIHznjh5isjfIX4KyUPc6yPY9HAUhcCG0YOf8tUxn8wyDXQvj1kAOcCUh0U4g3RAmze2Ot-2GKpurK23zro82OCK5KUXSNoOC0TnPcGeffSog6UwVhcOaLs9ilm7Ka3ZiBVC3p1DmiNzfD4IL0IB6HaNlbdmnVVVckLSr5J8koScqLYBOGiE0BBvvdIzwxx52KxJbIdHYlJzERnZHI_W0zzXLHcXLTU6CQpYGQTkBo5442lNzXwpjRxVrVDg6RJMlf1DRC57KJuEz7VHXIHpG1VlVFTVZJLCovcOFuS7vpb1j4GZ7WWzn-rvb12KHPs2rcy9mOjRqpa2nMP5SvPMo2JPuwIY7-YGYelPEmu-AdH4_eQQ
-```
+You will then be prompted for the token to decrypt.
 
 By default it uses the AWS credentials on your local machine to get the passphrase and initialisation vector from the QA environment.
 
@@ -21,7 +17,7 @@ By default it uses the AWS credentials on your local machine to get the passphra
 If you want to use different values to those above, can pass flags to customise them, e.g.
 
 ```
-npm run decrypt <token> -- --passphrase "Some other passphrase" --iv 60bdbb11
+npm run decrypt -- --passphrase "Some other passphrase" --iv testing!
 ```
 
 | flag | default | description |

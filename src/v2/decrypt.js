@@ -1,5 +1,6 @@
-const Config = require('@rides/node-config').default;
 const argv = require('yargs').argv;
+const readline = require('readline');
+const Config = require('@rides/node-config').default;
 const { BkngToken } = require('@bookingcom/bkng-crypto');
 
 const config = new Config({
@@ -11,13 +12,26 @@ const config = new Config({
     localConfig: {},
 });
 
-(async () => {
-    const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
-    const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
-    const bkngToken = new BkngToken(passphrase, iv);
+const cli = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-    const [token] = argv._;
-    const decryptedToken = await bkngToken.decrypt(token);
+cli.question('Enter the token to decrypt: ', async token => {
+    console.log();
 
-    console.log(decryptedToken);
-})();
+    try {
+        const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
+        const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
+        const bkngToken = new BkngToken(passphrase, iv);
+        const decryptedToken = await bkngToken.decrypt(token);
+
+        console.log('######################### TOKEN BODY #########################');
+        console.log(decryptedToken);
+        console.log('##############################################################');
+    } catch (err) {
+        console.error(err);
+    }
+
+    cli.close();
+});
