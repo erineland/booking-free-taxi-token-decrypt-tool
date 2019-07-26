@@ -12,9 +12,9 @@ const config = new Config({
 });
 
 (async () => {
-    const key = argv.key || await config.valueFor('booking.cookieSecret');
-    const iv = argv.iv || await config.valueFor('booking.cookieIv');
-    const bkngToken = new BkngToken(key, iv);
+    const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
+    const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
+    const bkngToken = new BkngToken(passphrase, iv);
 
     const [token] = argv._;
     const decryptedToken = await bkngToken.decrypt(token);
