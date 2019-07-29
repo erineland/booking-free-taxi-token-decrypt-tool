@@ -4,20 +4,34 @@
 
 ## Free Taxi v2 Tokens
 
+### Decrypt
+
 ```
 npm run decrypt
 ```
 
 You will then be prompted for the token to decrypt.
 
-By default it uses the AWS credentials on your local machine to get the passphrase and initialisation vector from the QA environment.
+### Encrypt
+
+```
+npm run encrypt
+```
+
+You will then be prompted for the data to encrypt.
 
 ### Options
 
-If you want to use different values to those above, can pass flags to customise them, e.g.
+By default the AWS credentials on your local machine will be used to get the passphrase and initialisation vector from the QA environment.
+
+If you want to use different values to those above, or retrieve them from a different environment, can pass flags to do so. E.g.
 
 ```
-npm run decrypt -- --passphrase "Some other passphrase" --iv testing!
+npm run decrypt -- --passphrase "Some other passphrase" --iv "testing\!"
+```
+
+```
+npm run encrypt -- --env "prod"
 ```
 
 | flag | default | description |
