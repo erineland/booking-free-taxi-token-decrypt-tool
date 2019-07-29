@@ -10,7 +10,10 @@
 npm run decrypt
 ```
 
-You will then be prompted for the token to decrypt.
+You will then be prompted for the token to decrypt, e.g.
+```
+iYuVKLMx51MD6plBZQSxf3FbmEgS0Fe1HuQpxIzEyelB2vWTcWe9JGcpZADDmY_vBlbv4tohS7uJYmDrOw__TKSyBurwfD3kITZG_mUgJ06dK_vtsNUuet7dFy8Pmib-dcR5It1BvVGRGsgwG4-EQBcMtKflKzLRnxRr24xWJlD1sEaw0AO-l_G2MSI8u4ic-czEH3iN4BOsenTBH--TyD-d-OVLZkvdDQs9xKqpjs0f4l6uyDKUU4P5r7of6kXf391U3ike5cVchUd-11BFey4KA00LcZUupew14BnxJLEITc5tf5iBvNXleeMGMheqJzwREjVMAa4c5mt2bsNxR-HoYxFiZDAf48ByIWGesQ-I3_DvRoAKiR31z8tKLp8uhRpRrgnjPAnKSyQtF_1_ATEQWQD0lvqP_QLGH5WK5qHrHlyDyoCpw18IitKtJ65ptJk6j5T5Ft05F0vq9ofbTLqCzHAU47QMCS6_sPCcMTY6twhyDVgJ98s8dLP7Ar-LxPCmtwqhlWrx45vBXY6tzg
+```
 
 ### Encrypt
 
@@ -18,7 +21,10 @@ You will then be prompted for the token to decrypt.
 npm run encrypt
 ```
 
-You will then be prompted for the data to encrypt.
+You will then be prompted for the data to encrypt, e.g. 
+```
+{"affiliateBookingReference":"123456789","language":"en-gb","pickup":{"iata":"MAN","date":"2019-05-21","passengers":2},"dropoff":{"lat":"53.4750868","lng":"-2.2533695","hotelName":"Hilton Deansgate"},"passenger":{"email":"ridewaystestteam@gmail.com","phone":"+44 11349 60000","title":"Mr","firstName":"Test","lastName":"Team"}}
+```
 
 ### Options
 
