@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "decrypt": "node ./src/v2/decrypt.js",
-    "encrypt": "node ./src/v2/encrypt.js"
+    "encrypt": "node ./src/v2/encrypt.js",
+    "generate-qa-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "util",
@@ -18,7 +20,8 @@
   "author": "***REMOVED*** ***REMOVED***",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "moment": "^2.24.0"
   },
   "dependencies": {
     "@bookingcom/bkng-crypto": "^3.1.0",

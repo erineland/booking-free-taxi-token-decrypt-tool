@@ -2,7 +2,6 @@
     "language": "en-gb",
     "pickup": {
         "iata": "MAN",
-        "date": "2019-08-21",
         "passengers": 2
     },
     "dropoff": {

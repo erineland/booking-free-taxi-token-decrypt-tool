@@ -35,6 +35,15 @@ const encrypt = async input => {
         payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
     }
 
+    if (!payload.pickup.date) {
+        // Auto generate pikcup date
+        const daysInFutureToTravelOut = 21;
+        const validCheckinMoment = moment();
+        validCheckinMoment.add(daysInFutureToTravelOut, 'days');
+        const validPickupDate = validCheckinMoment.format('YYYY-MM-DD');
+        payload.pickup.date = validPickupDate;
+    }
+
     console.log('\n######################### TOKEN BODY #########################');
     console.log(payload);
     console.log('##############################################################');
