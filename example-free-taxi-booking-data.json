@@ -1,13 +1,13 @@
 {
     "language": "en-gb",
     "pickup": {
-        "iata": "MAN",
+        "iata": "ATH",
         "passengers": 2
     },
     "dropoff": {
-        "lat": "53.4750868",
-        "lng": "-2.2533695",
-        "hotelName": "Hilton Deansgate"
+        "lat": "37.954515",
+        "lng": "23.717716",
+        "hotelName": "Athens Atrium Hotel"
     },
     "passenger": {
         "email": "ridewaystestteam@gmail.com",
