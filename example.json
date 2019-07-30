@@ -1,0 +1,20 @@
+{
+    "language": "en-gb",
+    "pickup": {
+        "iata": "MAN",
+        "date": "2019-08-21",
+        "passengers": 2
+    },
+    "dropoff": {
+        "lat": "53.4750868",
+        "lng": "-2.2533695",
+        "hotelName": "Hilton Deansgate"
+    },
+    "passenger": {
+        "email": "ridewaystestteam@gmail.com",
+        "phone": "+44 11349 60000",
+        "title": "Mr",
+        "firstName": "Test",
+        "lastName": "Team"
+    }
+}

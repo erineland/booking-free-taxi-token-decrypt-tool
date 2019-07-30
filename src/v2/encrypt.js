@@ -1,4 +1,6 @@
 const readline = require('readline');
+const fs = require('fs');
+const path = require('path');
 const argv = require('yargs').argv;
 const moment = require('moment');
 const Config = require('@rides/node-config').default;
@@ -18,25 +20,48 @@ const cli = readline.createInterface({
     output: process.stdout
 });
 
-cli.question('Enter the payload to encrypt: ', async input => {
-    console.log();
+const encrypt = async input => {
+    const payload = JSON.parse(input);
+    payload.timeGenerated = moment.utc().format();
+    payload.generatedBy = 'BookingGo';
 
-    try {
-        const payload = JSON.parse(input);
-        payload.timeGenerated = moment.utc().format();
-        payload.generatedBy = 'BookingGo';
-
-        const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
-        const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
-        const bkngToken = new BkngToken(passphrase, iv);
-        const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
-
-        console.log('###################### ENCRYPTED TOKEN #######################');
-        console.log(encryptedToken);
-        console.log('##############################################################');
-    } catch (err) {
-        console.error(err);
+    if (!payload.affiliateBookingReference) {
+        payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
     }
 
-    cli.close();
-});
+    console.log('\n######################### TOKEN BODY #########################');
+    console.log(payload);
+    console.log('##############################################################\n');
+
+    const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
+    const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
+    const bkngToken = new BkngToken(passphrase, iv);
+    const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
+
+    console.log('###################### ENCRYPTED TOKEN #######################');
+    console.log(encryptedToken);
+    console.log('##############################################################');
+}
+
+if (argv.file) {
+    (async () => {
+        try {
+            const filePath = path.resolve(argv.file);
+            const input = fs.readFileSync(filePath);
+            await encrypt(input);
+            process.exit(0);
+        } catch (err) {
+            console.error(err);
+            process.exit(2);
+        }
+    })();
+} else {
+    cli.question('Enter the payload to encrypt: ', async input => {
+        try {
+            await encrypt(input);
+        } catch (err) {
+            console.error(err);
+        }
+        cli.close();
+    });
+}

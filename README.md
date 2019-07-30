@@ -26,6 +26,14 @@ You will then be prompted for the data to encrypt, e.g.
 {"affiliateBookingReference":"123456789","language":"en-gb","pickup":{"iata":"MAN","date":"2019-05-21","passengers":2},"dropoff":{"lat":"53.4750868","lng":"-2.2533695","hotelName":"Hilton Deansgate"},"passenger":{"email":"ridewaystestteam@gmail.com","phone":"+44 11349 60000","title":"Mr","firstName":"Test","lastName":"Team"}}
 ```
 
+You can also pass the path to a json file containing the data to encrypt:
+
+```
+npm run encrypt -- --file ./example.json
+```
+
+If you don't include an `affiliateBookingReference`, a random ten-digit one will be generated for you.
+
 ### Options
 
 By default the AWS credentials on your local machine will be used to get the passphrase and initialisation vector from the QA environment.
