@@ -33,6 +33,10 @@ const encrypt = async input => {
 
     if (!payload.affiliateBookingReference) {
         payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
+
+        console.log('\n######################### GENERATED BOOKING.COM BOOKING REFERENCE #########################');
+        console.log(payload.affiliateBookingReference);
+        console.log('##############################################################');
     }
 
     if (!payload.pickup.date) {
