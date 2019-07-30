@@ -36,6 +36,18 @@ If you don't include an `affiliateBookingReference`, a random ten-digit one will
 
 If you don't include an `pickup.date`, a date 21 days in the future will be generated for you.
 
+#### Environment Specific Free Taxi Token Generation (Encryption)
+
+As a set of shortcuts, you can generate Free Taxi tokens, with randomly generated booking references and a valid pickup date 21 days in the future, via the commands:
+
+```
+npm run generate-dev-free-taxi-token
+npm run generate-qa-free-taxi-token
+npm run generate-prod-free-taxi-token
+```
+
+*You will need local AWS SDK access to the DEV/QA/PROD environments setup on your machine*
+
 ### Options
 
 By default the AWS credentials on your local machine will be used to get the passphrase and initialisation vector from the QA environment.
