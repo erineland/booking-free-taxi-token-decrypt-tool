@@ -59,7 +59,7 @@ const encrypt = async input => {
     console.log(chalk.yellow('##############################################################'));
 
     console.log(chalk.green('\n######################## REDEEM URL ##########################'));
-    console.log(`${urls[config.options.env]}/promotions/free-taxi/${encryptedToken}`);
+    console.log(`${urls[config.options.env]}/${payload.language}/promotions/free-taxi/${encryptedToken}?utm_source=booking.com&utm_medium=intra&utm_campaign=bookingfreetaxi-desktop&affiliateCode=bookingfreetaxi`);
     console.log(chalk.green('##############################################################'));
 }
 
