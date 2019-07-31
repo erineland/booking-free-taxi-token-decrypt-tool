@@ -1,5 +1,6 @@
 const argv = require('yargs').argv;
 const readline = require('readline');
+const chalk = require('chalk');
 const Config = require('@rides/node-config').default;
 const { BkngToken } = require('@bookingcom/bkng-crypto');
 
@@ -26,9 +27,9 @@ cli.question('Enter the token to decrypt: ', async token => {
         const bkngToken = new BkngToken(passphrase, iv);
         const decryptedToken = await bkngToken.decrypt(token);
 
-        console.log('######################### TOKEN BODY #########################');
+        console.log(chalk.blue('######################### TOKEN BODY #########################'));
         console.log(decryptedToken);
-        console.log('##############################################################');
+        console.log(chalk.blue('##############################################################'));
     } catch (err) {
         console.error(err);
     }

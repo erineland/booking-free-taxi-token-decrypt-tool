@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const argv = require('yargs').argv;
 const moment = require('moment');
+const chalk = require('chalk');
 const Config = require('@rides/node-config').default;
 const { BkngToken } = require('@bookingcom/bkng-crypto');
 
@@ -33,14 +34,10 @@ const encrypt = async input => {
 
     if (!payload.affiliateBookingReference) {
         payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
-
-        console.log('\n######################### GENERATED BOOKING.COM BOOKING REFERENCE #########################');
-        console.log(payload.affiliateBookingReference);
-        console.log('##############################################################');
     }
 
     if (!payload.pickup.date) {
-        // Auto generate pikcup date
+        // Auto generate pickup date
         const daysInFutureToTravelOut = 21;
         const validCheckinMoment = moment();
         validCheckinMoment.add(daysInFutureToTravelOut, 'days');
@@ -48,22 +45,22 @@ const encrypt = async input => {
         payload.pickup.date = validPickupDate;
     }
 
-    console.log('\n######################### TOKEN BODY #########################');
+    console.log(chalk.blue('\n######################### TOKEN BODY #########################'));
     console.log(payload);
-    console.log('##############################################################');
+    console.log(chalk.blue('##############################################################'));
 
     const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
     const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
     const bkngToken = new BkngToken(passphrase, iv);
-    const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
+    const encryptedToken = await bkngToken.encrypt(input);
 
-    console.log('\n###################### ENCRYPTED TOKEN #######################');
+    console.log(chalk.yellow('\n###################### ENCRYPTED TOKEN #######################'));
     console.log(encryptedToken);
-    console.log('##############################################################');
+    console.log(chalk.yellow('##############################################################'));
 
-    console.log('\n######################## REDEEM URL ##########################');
+    console.log(chalk.green('\n######################## REDEEM URL ##########################'));
     console.log(`${urls[config.options.env]}/promotions/free-taxi/${encryptedToken}`);
-    console.log('##############################################################');
+    console.log(chalk.green('##############################################################'));
 }
 
 if (argv.file) {
