@@ -52,7 +52,7 @@ const encrypt = async input => {
     const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
     const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
     const bkngToken = new BkngToken(passphrase, iv);
-    const encryptedToken = await bkngToken.encrypt(input);
+    const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
 
     console.log(chalk.yellow('\n###################### ENCRYPTED TOKEN #######################'));
     console.log(encryptedToken);
