@@ -21,7 +21,7 @@ iYuVKLMx51MD6plBZQSxf3FbmEgS0Fe1HuQpxIzEyelB2vWTcWe9JGcpZADDmY_vBlbv4tohS7uJYmDr
 npm run encrypt
 ```
 
-You will then be prompted for the data to encrypt, e.g. 
+You will then be prompted for the data to encrypt, e.g.
 ```
 {"affiliateBookingReference":"123456789","language":"en-gb","pickup":{"iata":"MAN","date":"2019-05-21","passengers":2},"dropoff":{"lat":"53.4750868","lng":"-2.2533695","hotelName":"Hilton Deansgate"},"passenger":{"email":"ridewaystestteam@gmail.com","phone":"+44 11349 60000","title":"Mr","firstName":"Test","lastName":"Team"}}
 ```
@@ -29,10 +29,24 @@ You will then be prompted for the data to encrypt, e.g.
 You can also pass the path to a json file containing the data to encrypt:
 
 ```
-npm run encrypt -- --file ./example.json
+npm run encrypt -- --file ./example-free-taxi-booking-data.json
 ```
 
 If you don't include an `affiliateBookingReference`, a random ten-digit one will be generated for you.
+
+If you don't include an `pickup.date`, a date 21 days in the future will be generated for you.
+
+#### Environment Specific Free Taxi Token Generation (Encryption)
+
+As a set of shortcuts, you can generate Free Taxi tokens, with randomly generated booking references and a valid pickup date 21 days in the future, via the commands:
+
+```
+npm run generate-dev-free-taxi-token
+npm run generate-qa-free-taxi-token
+npm run generate-prod-free-taxi-token
+```
+
+*You will need local AWS SDK access to the DEV/QA/PROD environments setup on your machine*
 
 ### Options
 
