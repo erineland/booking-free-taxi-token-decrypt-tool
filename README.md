@@ -53,11 +53,13 @@ npm run generate-prod-free-taxi-token
 
 ### Passphrase and IV
 You can manually get the passphrase and IV from AWS and pass them in so you don't have to worry about your AWS CLI setup, but this is more time consuming
+
+[Details on how to get these values from AWS here](https://karmigo.atlassian.net/wiki/spaces/BI/pages/1189478414/Free-Taxi+Experiment+Runbook)
 ```
 npm run decrypt -- --passphrase "Some other passphrase" --iv "testing\!"
 ```
 
-If you don't pass in these values, the tool will attempt to fetch them from AWS using the credentials you have set up for your `default` AWS CLI profile (more info here https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+If you don't pass in these values, the tool will attempt to fetch them from AWS using the credentials you have set up for your `default` AWS CLI profile,  [more info here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) 
 
 By default it will attempt to get the values for QA, but you can specify the environment using the `env` flag
 ```
