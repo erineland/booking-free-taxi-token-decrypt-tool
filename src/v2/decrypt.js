@@ -21,17 +21,26 @@ const cli = readline.createInterface({
 cli.question('Enter the token to decrypt: ', async token => {
     console.log();
 
+    let passphrase;
+    let iv;
     try {
-        const passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
-        const iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
+
+        if (argv.phone) {
+            passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiCellphonePassphrase');
+            iv = argv.iv || await config.valueFor('booking.freeTaxiCellphoneIV');
+        } else {
+            passphrase = argv.passphrase || await config.valueFor('booking.freeTaxiTokenPassphrase');
+            iv = argv.iv || await config.valueFor('booking.freeTaxiTokenIV');
+        }
+
         const bkngToken = new BkngToken(passphrase, iv);
         const decryptedToken = await bkngToken.decrypt(token);
-
+        
         console.log(chalk.blue('######################### TOKEN BODY #########################'));
         console.log(decryptedToken);
         console.log(chalk.blue('##############################################################'));
     } catch (err) {
-        console.error(err);
+        console.error(chalk.red(err));
     }
 
     cli.close();
