@@ -23,11 +23,9 @@ const expectedDecryptedBody = {
         lastName: 'Team',
     },
 };
+
 const phoneTokenToDecrypt = 'izcv5O6lG2SG9xJgSojiwk9u5fMhgyeXoAvDMx1BgXE';
-
 const expectedCellphone = "+44 99999 60001";
-
-
 const passphrase = "this is the passphrase for cellphone encryption lol";
 const iv = "testingg";
 
