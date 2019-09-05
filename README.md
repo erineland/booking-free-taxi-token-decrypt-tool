@@ -69,6 +69,13 @@ npm run encrypt -- --env "prod"
 So for example if the default profile has your `prod` credentials set and you are trying to decrypt a `prod` token, you only need to run the command above without passing in passphrase/IV. If you're comfortable doing so it may be best to set your default credentials to the environment you are currently working in so you don't have to manually grab them from AWS all the time.
 
 If you want to use different values to those above, or retrieve them from a different environment, can pass flags to do so. E.g.
+### Cellphone
+You can use the tool to decrypt an encrypted cellphone when we see the error in the logs in the same way by passing in the environment and using the `--phone` flag
+
+eg.
+```
+npm run decrypt -- --env 'prod' --phone
+```
 
 | flag | default | description |
 | --- | --- | --- |
@@ -76,5 +83,6 @@ If you want to use different values to those above, or retrieve them from a diff
 | --region | "eu-west-1" | The AWS region to use when getting the credentials |
 | --passphrase | value retrieved from SSM | Passphrase to use |
 | --iv | value retrieved from SSM | Initialisation vector to use |
+| --phone | N\A | Flag to specify you are decrypting a cellphone number
 
 
