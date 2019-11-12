@@ -11,11 +11,12 @@ const urls = {
     dev: 'https://taxi.dev.someonedrive.me',
     qa: 'https://taxi.qa.someonedrive.me',
     prod: 'https://taxi.booking.com',
+    local: 'https://taxi-local.dev.booking.com',
 };
 
 const config = new Config({
     region: argv.region || 'eu-west-1',
-    env: argv.env || 'qa',
+    env: (argv.env === 'local' || argv.env === undefined) ? 'qa' : argv.env,
     platform: 'web',
     appName: 'grandcentral',
     enableSSM: true,
@@ -59,7 +60,7 @@ const encrypt = async input => {
     console.log(chalk.yellow('##############################################################'));
 
     console.log(chalk.green('\n######################## REDEEM URL ##########################'));
-    console.log(`${urls[config.options.env]}/${payload.language}/promotions/free-taxi/${encryptedToken}?utm_source=booking.com&utm_medium=intra&utm_campaign=bookingfreetaxi-desktop&affiliateCode=bookingfreetaxi`);
+    console.log(`${urls[argv.env || config.options.env]}/${payload.language}/promotions/free-taxi/${encryptedToken}?utm_source=booking.com&utm_medium=intra&utm_campaign=bookingfreetaxi-desktop&affiliateCode=bookingfreetaxi`);
     console.log(chalk.green('##############################################################'));
 }
 

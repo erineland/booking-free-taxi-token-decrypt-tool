@@ -42,6 +42,7 @@ If you don't include an `pickup.date`, a date 21 days in the future will be gene
 As a set of shortcuts, you can generate Free Taxi tokens, with randomly generated booking references and a valid pickup date 21 days in the future, via the commands:
 
 ```
+npm run generate-local-free-taxi-token
 npm run generate-dev-free-taxi-token
 npm run generate-qa-free-taxi-token
 npm run generate-prod-free-taxi-token
@@ -79,10 +80,8 @@ npm run decrypt -- --env 'prod' --phone
 
 | flag | default | description |
 | --- | --- | --- |
-| --env | "qa" | The environment to get the credentials from |
+| --env | "qa" | The environment for which the token is required. Available options: `local`, `dev`, `qa`, `prod` |
 | --region | "eu-west-1" | The AWS region to use when getting the credentials |
 | --passphrase | value retrieved from SSM | Passphrase to use |
 | --iv | value retrieved from SSM | Initialisation vector to use |
 | --phone | N\A | Flag to specify you are decrypting a cellphone number
-
-

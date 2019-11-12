@@ -10,6 +10,7 @@
     "generate-dev-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json --env 'dev' --region 'us-west-2'",
     "generate-qa-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json",
     "generate-prod-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json --env 'prod'",
+    "generate-local-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json --env 'local'",
     "test:watch": "jest --watch"
   },
   "keywords": [
