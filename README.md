@@ -85,3 +85,4 @@ npm run decrypt -- --env 'prod' --phone
 | --passphrase | value retrieved from SSM | Passphrase to use |
 | --iv | value retrieved from SSM | Initialisation vector to use |
 | --phone | N\A | Flag to specify you are decrypting a cellphone number
+| --toggles | [NAMES_OF_TOGGLES]] | Give the names of the toggles with spaces in-between (the names)
