@@ -39,7 +39,7 @@ If you don't include an `pickup.date`, a date 21 days in the future will be gene
 
 You can add custom feature toggle names in your package.json file, for instance:
 ```
-"generate-local-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json --env 'local' --toggles 'free-taxi-mask-data free-taxi-phone-validation'",
+npm run generate-local-free-taxi-token -- --toggles free-taxi-mask-data
 ```
 
 #### Environment Specific Free Taxi Token Generation (Encryption)
