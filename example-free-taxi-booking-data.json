@@ -2,8 +2,7 @@
     "language": "en-gb",
     "pickup": {
         "iata": "ATH",
-        "passengers": 2,
-        "maxPassengers": 3
+        "passengers": 2
     },
     "dropoff": {
         "lat": "37.954515",

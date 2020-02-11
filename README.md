@@ -37,11 +37,6 @@ If you don't include an `affiliateBookingReference`, a random ten-digit one will
 
 If you don't include an `pickup.date`, a date 21 days in the future will be generated for you.
 
-You can add custom feature toggle names in your package.json file, for instance:
-```
-"generate-local-free-taxi-token": "npm run encrypt -- --file ./example-free-taxi-booking-data.json --env 'local' --toggles 'free-taxi-mask-data free-taxi-phone-validation'",
-```
-
 #### Environment Specific Free Taxi Token Generation (Encryption)
 
 As a set of shortcuts, you can generate Free Taxi tokens, with randomly generated booking references and a valid pickup date 21 days in the future, via the commands:
@@ -90,4 +85,3 @@ npm run decrypt -- --env 'prod' --phone
 | --passphrase | value retrieved from SSM | Passphrase to use |
 | --iv | value retrieved from SSM | Initialisation vector to use |
 | --phone | N\A | Flag to specify you are decrypting a cellphone number
-| --toggles | [NAMES_OF_TOGGLES]] | Give the names of the toggles with spaces in-between (the names)

@@ -55,21 +55,12 @@ const encrypt = async input => {
     const bkngToken = new BkngToken(passphrase, iv);
     const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
 
-    const spyGlass = '&spyglass=true';
-    let toggleString = '';
-    if (argv.toggles != '') {
-        const featureToggles = argv.toggles.split(' ');
-        featureToggles.forEach(function (toggle) {
-            toggleString += `&rw-feature-toggle[${toggle}]=true`;
-        });
-    }
-
     console.log(chalk.yellow('\n###################### ENCRYPTED TOKEN #######################'));
     console.log(encryptedToken);
     console.log(chalk.yellow('##############################################################'));
 
     console.log(chalk.green('\n######################## REDEEM URL ##########################'));
-    console.log(`${urls[argv.env || config.options.env]}/${payload.language}/promotions/free-taxi/${encryptedToken}?utm_source=booking.com&utm_medium=intra&utm_campaign=bookingfreetaxi-desktop&affiliateCode=bookingfreetaxi${spyGlass}${toggleString}`);
+    console.log(`${urls[argv.env || config.options.env]}/${payload.language}/promotions/free-taxi/${encryptedToken}?utm_source=booking.com&utm_medium=intra&utm_campaign=bookingfreetaxi-desktop&affiliateCode=bookingfreetaxi`);
     console.log(chalk.green('##############################################################'));
 }
 
