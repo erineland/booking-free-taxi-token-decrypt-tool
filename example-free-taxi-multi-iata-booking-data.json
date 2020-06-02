@@ -1,0 +1,22 @@
+{
+    "language": "en-gb",
+    "pickup": {
+        "iata": "FCO",
+        "isMultiIata": true,
+        "airports": ["FCO", "CIA"],
+        "passengers": 2,
+        "maxPassengers": 3
+    },
+    "dropoff": {
+        "lat": "41.901625",
+        "lng": "12.494832",
+        "hotelName": "Hotel Quirinale"
+    },
+    "passenger": {
+        "email": "ridewaystestteam@gmail.com",
+        "phone": "+44 11349 60000",
+        "title": "Mr",
+        "firstName": "Test",
+        "lastName": "Team"
+    }
+}

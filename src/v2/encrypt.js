@@ -48,12 +48,6 @@ const encrypt = async input => {
     }
 
     if (argv.isMultiIata == 'true') {
-        const multiIataPath = path.resolve('multiIata-data.json')
-        const multiIataData = JSON.parse(fs.readFileSync(multiIataPath));
-        payload.pickup = {
-            ...payload.pickup,
-            ...multiIataData
-        }
         toggleString += '&rw-feature-toggle[free-taxi-multi-iata]=true'
     }
 
@@ -89,7 +83,12 @@ const encrypt = async input => {
 if (argv.file) {
     (async () => {
         try {
-            const filePath = path.resolve(argv.file);
+            let filePath;
+            if (argv.isMultiIata == 'true') {
+                filePath = path.resolve('example-free-taxi-multi-iata-booking-data.json')
+            } else {
+                filePath = path.resolve(argv.file);
+            }
             const input = fs.readFileSync(filePath);
             await encrypt(input);
             process.exit(0);
