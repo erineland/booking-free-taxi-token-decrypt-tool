@@ -42,6 +42,14 @@ You can add custom feature toggle names in your package.json file, for instance:
 npm run generate-local-free-taxi-token -- --toggles free-taxi-mask-data
 ```
 
+#### Multi Iata
+You can use the flag `--isMultiIata true` to include necessary information in the token for multiple iatas, for example:
+```
+npm run generate-local-free-taxi-token -- --isMultiIata true
+```
+
+This data can be found and edited in `multiIata-data.json`
+
 #### Environment Specific Free Taxi Token Generation (Encryption)
 
 As a set of shortcuts, you can generate Free Taxi tokens, with randomly generated booking references and a valid pickup date 21 days in the future, via the commands:

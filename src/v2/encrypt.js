@@ -32,6 +32,7 @@ const encrypt = async input => {
     const payload = JSON.parse(input);
     payload.timeGenerated = moment.utc().format();
     payload.generatedBy = 'BookingGo';
+    let toggleString = '';
 
     if (!payload.affiliateBookingReference) {
         payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
@@ -46,6 +47,10 @@ const encrypt = async input => {
         payload.pickup.date = validPickupDate;
     }
 
+    if (argv.isMultiIata == 'true') {
+        toggleString += '&rw-feature-toggle[free-taxi-multi-iata]=true'
+    }
+
     console.log(chalk.blue('\n######################### TOKEN BODY #########################'));
     console.log(payload);
     console.log(chalk.blue('##############################################################'));
@@ -56,11 +61,13 @@ const encrypt = async input => {
     const encryptedToken = await bkngToken.encrypt(JSON.stringify(payload));
 
     const spyGlass = '&spyglass=true';
-    let toggleString = '';
     if (argv.toggles != '' && argv.toggles) {
         const featureToggles = argv.toggles.split(' ');
         featureToggles.forEach(function (toggle) {
-            toggleString += `&rw-feature-toggle[${toggle}]=true`;
+            const toggleToAdd = `&rw-feature-toggle[${toggle}]=true`;
+            if (!toggleString.includes(toggleToAdd)) {
+                toggleString += toggleToAdd;
+            }
         });
     }
 
@@ -76,7 +83,12 @@ const encrypt = async input => {
 if (argv.file) {
     (async () => {
         try {
-            const filePath = path.resolve(argv.file);
+            let filePath;
+            if (argv.isMultiIata == 'true') {
+                filePath = path.resolve('example-free-taxi-multi-iata-booking-data.json')
+            } else {
+                filePath = path.resolve(argv.file);
+            }
             const input = fs.readFileSync(filePath);
             await encrypt(input);
             process.exit(0);
