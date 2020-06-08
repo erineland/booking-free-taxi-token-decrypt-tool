@@ -5,7 +5,8 @@
         "isMultiIata": true,
         "airports": ["FCO", "CIA"],
         "passengers": 2,
-        "maxPassengers": 3
+        "maxPassengers": 3,
+        "date": "2019-06-29"
     },
     "dropoff": {
         "lat": "41.901625",
