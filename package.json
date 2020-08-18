@@ -32,7 +32,6 @@
     "@bookingcom/bkng-crypto": "^3.1.0",
     "@rides/data-models": "^3.1.2",
     "@rides/node-config": "^1.3.1",
-    "@rides/taxi-car-card-component": "^0.1.0",
     "chalk": "^2.4.2",
     "yargs": "^13.3.0"
   }
