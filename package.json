@@ -20,7 +20,7 @@
     "token",
     "decrypt"
   ],
-  "author": "***REMOVED*** ***REMOVED***",
+  "author": "Erin Grace Eland",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^3.6.0",
