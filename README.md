@@ -66,7 +66,7 @@ npm run generate-prod-free-taxi-token
 ## Options
 
 ### Passphrase and IV
-You can manually get the passphrase and IV from AWS and pass them in so you don't have to worry about your AWS CLI setup, but this is more time-consuming. You can find get details from the AWS SSM Parameter Store, if you have the required permissions.
+You can manually get the passphrase and IV from AWS and pass them in so you don't have to worry about your AWS CLI setup, but this is more time-consuming. You can get these details from the AWS SSM Parameter Store if you have the required permissions.
 ```
 npm run decrypt -- --passphrase "Some other passphrase" --iv "testing\!"
 ```
