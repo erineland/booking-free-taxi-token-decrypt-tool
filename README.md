@@ -66,16 +66,29 @@ npm run generate-prod-free-taxi-token
 ## Options
 
 ### Passphrase and IV
-You can manually get the passphrase and IV from AWS and pass them in so you don't have to worry about your AWS CLI setup, but this is more time consuming
-
-[Details on how to get these values from AWS here](https://karmigo.atlassian.net/wiki/spaces/BI/pages/1189478414/Free-Taxi+Experiment+Runbook)
+You can manually get the passphrase and IV from AWS and pass them in so you don't have to worry about your AWS CLI setup, but this is more time-consuming. You can find get details from the AWS SSM Parameter Store, if you have the required permissions.
 ```
 npm run decrypt -- --passphrase "Some other passphrase" --iv "testing\!"
 ```
 
 If you don't pass in these values, the tool will attempt to fetch them from AWS using the credentials you have set up for your `default` AWS CLI profile,  [more info here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) 
 
-By default it will attempt to get the values for QA, but you can specify the environment using the `env` flag
+You need to create a .aws folder in your home directory and create a file called credentials (no extension) inside it. Add the following values which can be retrieved from [bookinggo.awsapps.com](bookinggo.awsapps.com):
+
+```ini
+[default]
+aws_access_key_id = XXXX
+aws_secret_access_key = XXXX
+```
+
+Add the following to your `~/.bash_profile` or `~/.zshrc`, using the same values:
+
+```bash
+export AWS_ACCESS_KEY_ID="XXXX"
+export AWS_SECRET_ACCESS_KEY="XXXX"
+```
+
+By default, it will attempt to get the values for QA, but you can specify the environment using the `env` flag
 ```
 npm run encrypt -- --env "prod"
 ```
