@@ -73,20 +73,24 @@ npm run decrypt -- --passphrase "Some other passphrase" --iv "testing\!"
 
 If you don't pass in these values, the tool will attempt to fetch them from AWS using the credentials you have set up for your `default` AWS CLI profile,  [more info here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) 
 
-You need to create a .aws folder in your home directory and create a file called credentials (no extension) inside it. Add the following values which can be retrieved from [bookinggo.awsapps.com](bookinggo.awsapps.com):
+There are two possible ways to set up the credentials:
 
-```ini
-[default]
-aws_access_key_id = XXXX
-aws_secret_access_key = XXXX
-```
+1. You need to create a .aws folder in your home directory and create a file called credentials (no extension) inside it. Add the following values which can be retrieved from [bookinggo.awsapps.com](bookinggo.awsapps.com):
 
-Add the following to your `~/.bash_profile` or `~/.zshrc`, using the same values:
+    ```ini
+    [default]
+    aws_access_key_id = XXXX
+    aws_secret_access_key = XXXX
+    ```
 
-```bash
-export AWS_ACCESS_KEY_ID="XXXX"
-export AWS_SECRET_ACCESS_KEY="XXXX"
-```
+2. Add the following to your `~/.bash_profile` or `~/.zshrc`, retrieving the values from [bookinggo.awsapps.com](bookinggo.awsapps.com):
+
+    ```bash
+    export AWS_ACCESS_KEY_ID="XXXX"
+    export AWS_SECRET_ACCESS_KEY="XXXX"
+    ```
+   
+The AWS credentials are time-limited and will expire after a few hours, so you will have to update the credentials regularly.
 
 By default, it will attempt to get the values for QA, but you can specify the environment using the `env` flag
 ```
