@@ -38,7 +38,7 @@ const encrypt = async input => {
         payload.affiliateBookingReference = String(parseInt(Math.random() * 10000000000, 10));
     }
 
-    if (!payload.pickup.date) {
+    if (payload.pickup && !payload.pickup.date) {
         // Auto generate pickup date
         const daysInFutureToTravelOut = 21;
         const validCheckinMoment = moment();
